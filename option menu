@@ -1,0 +1,77 @@
+//menu/menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item1"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="New Tab"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/item2"
+        android:title="BookMarks"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/item3"
+        android:title="Images"
+        app:showAsAction="never">
+    <menu>
+        <item android:id="@+id/subitem1"
+            android:title="Save"/>
+        <item android:id="@+id/subitem2"
+            android:title="Download"/>
+
+    </menu>
+</item>
+    </menu>
+    
+//activity.java
+package com.example.optionmenu;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.zip.Inflater;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menuitem,menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.item1:
+                Toast.makeText(this,"New tab is selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item2:
+                Toast.makeText(this,"BookMarks are selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item3:
+                Toast.makeText(this,"Images are selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.subitem1:
+                Toast.makeText(this,"Save is selected",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.subitem2:
+                Toast.makeText(this,"Download is selected",Toast.LENGTH_SHORT).show();
+                return true;
+
+
+
+        }
+        return onOptionsItemSelected(item);
+    }
+}
